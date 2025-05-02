@@ -1,0 +1,15 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore model files (optional)
+model/*.pt
+
+# Ignore generated pickle embeddings
+data/embedded/
+
+# Ignore raw data if it's large
+data/raw_pdbs/
+
+# Ignore Jupyter checkpoins (if used later)
+.ipynb_checkpoints/

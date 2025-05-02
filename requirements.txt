@@ -1,0 +1,6 @@
+torch>=2.0
+tape-proteins
+pandas
+scikit-learn
+biopython
+numpy
