@@ -113,26 +113,21 @@ This section showcases evaluation metrics for different models used to classify 
 
 ### 🔄 Confusion Matrices (Visual)
 
-<details>
-<summary>Transformer</summary>
+Transformer
 
 ![Transformer Confusion Matrix](images/confusion_matrix_transformer.png)
 
-</details>
 
-<details>
-<summary>CNN-BiLSTM + Augmentation</summary>
+CNN-BiLSTM + Augmentation
 
 ![CNN-BiLSTM Confusion Matrix](images/confusion_matrix_cnn_bilstm.png)
 
-</details>
 
-<details>
-<summary>BiLSTM + Risk</summary>
+BiLSTM + Risk
 
 ![BiLSTM + Risk Confusion Matrix](images/confusion_matrix_bilstm_risk.png)
 
-</details>
+
 
 
 
