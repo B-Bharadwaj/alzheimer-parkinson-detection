@@ -102,6 +102,8 @@ This section showcases evaluation metrics for different models used to classify 
 | CNN-BiLSTM + Aug | 65%      | 0.71          | 0.50         | 0.63      | 0.1099   |
 ```
 
+![TEST](images/confusion_matrix_transformer.png)
+
 ### 📉 Training vs Validation Loss (Transformer)
 
 ![Loss Curve](images/transformer_training_loss.png)
