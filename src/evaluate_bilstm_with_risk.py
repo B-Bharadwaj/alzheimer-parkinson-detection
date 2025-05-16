@@ -1,9 +1,14 @@
 import torch
 import torch.nn as nn
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from torch.utils.data import DataLoader, Dataset
 from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from models.bilstm_with_attention import BiLSTMWithAttention
 from sklearn.metrics import classification_report, confusion_matrix, mean_squared_error
 import numpy as np
 import matplotlib.pyplot as plt
