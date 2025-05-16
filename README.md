@@ -68,7 +68,7 @@ A&P_Detection/
 
 ## 🧠 How to Use
 
-1. Extract Sequences from `.pdb` files
+### 1. Extract Sequences from `.pdb` files
 ```bash
 python src/extract_sequences.py
 
@@ -79,19 +79,18 @@ python src/embed_sequences.py
 python scripts/add_risk_to_pkl.py
 
 4. Train Models
-# Train BiLSTM
+🔁 Train BiLSTM
 python src/train_bilstm_with_risk.py
 
-# Train Transformer
+🧠 Train Transformer
 python src/train_transformer_with_risk.py
 
-#CNN-BiLSTM Hybrid
+🧬 CNN + BiLSTM Hybrid
 python src/train_cnn_bilstm_with_risk.py
 
-5. Evaluate
+5. Evaluate Models
 python src/evaluate_bilstm_with_risk.py
 python src/evaluate_transformer_with_risk.py
-
 
 
 
