@@ -15,14 +15,6 @@ This project detects Alzheimer's, Parkinson's, and normal protein sequences base
 | CNN-BiLSTM + Risk    | ~0.65       | ~0.11                | Feature extraction + memory   |
 
 
-### 📉 Training vs Validation Loss
-
-![Train vs Val Loss](training_vs_validation_loss.png)
-
-### 📉 Transformer Training Loss
-
-![Transformer Loss](transformer_training_loss.png)
-
 
 
 ## 📂 Project Structure
@@ -91,5 +83,60 @@ python src/train_cnn_bilstm_with_risk.py
 python src/evaluate_bilstm_with_risk.py
 python src/evaluate_transformer_with_risk.py
 
+
+
+## 📊 Results Summary
+
+This section showcases evaluation metrics for different models used to classify protein sequences into **Alzheimer**, **Parkinson**, and **Normal** classes. Additionally, each model predicts a **misfolding risk score** (regression).
+
+---
+
+### ✅ Model Comparison Table
+
+| Model            | Accuracy | Alzheimer F1 | Parkinson F1 | Normal F1 | Risk MSE |
+|------------------|----------|---------------|--------------|-----------|----------|
+| Transformer      | 65%      | 0.75          | 0.50         | 0.67      | 0.1099   |
+| CNN-BiLSTM       | 63%      | 0.67          | 0.53         | 0.60      | 0.118x   |
+| BiLSTM + Risk    | 60%      | 0.65          | 0.47         | 0.60      | 0.131x   |
+| CNN-BiLSTM + Aug | 65%      | 0.71          | 0.50         | 0.63      | 0.1099   |
+
+
+---
+
+### 📉 Training vs Validation Loss (Transformer)
+
+![Loss Curve](transformer_training_loss.png)
+
+- Shows model convergence and early stopping
+
+### 📉 Transformer Training Loss
+
+![Transformer Loss](transformer_training_loss.png)
+
+
+
+---
+### 🔄 Confusion Matrices (Visual)
+
+<details>
+<summary>Transformer</summary>
+
+![Transformer Confusion Matrix](saved_model/confusion_matrix_transformer.png)
+
+</details>
+
+<details>
+<summary>CNN-BiLSTM + Augmentation</summary>
+
+![CNN-BiLSTM Confusion Matrix](saved_model/confusion_matrix_cnn_bilstm.png)
+
+</details>
+
+<details>
+<summary>BiLSTM + Risk</summary>
+
+![BiLSTM + Risk Confusion Matrix](saved_model/confusion_matrix_bilstm_risk.png)
+
+</details>
 
 
