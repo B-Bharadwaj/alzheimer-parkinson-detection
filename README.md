@@ -103,30 +103,6 @@ This section showcases evaluation metrics for different models used to classify 
 
 ---
 
-### 📉 Training vs Validation Loss (Transformer)
-
-![Loss Curve](C:\Users\bhara\OneDrive\Documents\A&P_Detection\images\training_vs_validation_loss.png)
-
-- Shows model convergence and early stopping
-
----
-
-### 🔄 Confusion Matrices (Visual)
-
-Transformer
-
-![Transformer Confusion Matrix](images/confusion_matrix_transformer.png)
-
-
-CNN-BiLSTM + Augmentation
-
-![CNN-BiLSTM Confusion Matrix](images/confusion_matrix_cnn_bilstm.png)
-
-
-BiLSTM + Risk
-
-![BiLSTM + Risk Confusion Matrix](images/confusion_matrix_bilstm_risk.png)
-
 
 
 
