@@ -86,7 +86,7 @@ python src/evaluate_transformer_with_risk.py
 
 
 ## 📊 Results Summary
-
+```bash
 This section showcases evaluation metrics for different models used to classify protein sequences into **Alzheimer**, **Parkinson**, and **Normal** classes. Additionally, each model predicts a **misfolding risk score** (regression).
 
 ---
@@ -105,38 +105,34 @@ This section showcases evaluation metrics for different models used to classify 
 
 ### 📉 Training vs Validation Loss (Transformer)
 
-![Loss Curve](transformer_training_loss.png)
+![Loss Curve](images/transformer_training_loss.png)
 
 - Shows model convergence and early stopping
 
-### 📉 Transformer Training Loss
-
-![Transformer Loss](transformer_training_loss.png)
-
-
-
 ---
+
 ### 🔄 Confusion Matrices (Visual)
 
 <details>
 <summary>Transformer</summary>
 
-![Transformer Confusion Matrix](saved_model/confusion_matrix_transformer.png)
+![Transformer Confusion Matrix](images/confusion_matrix_transformer.png)
 
 </details>
 
 <details>
 <summary>CNN-BiLSTM + Augmentation</summary>
 
-![CNN-BiLSTM Confusion Matrix](saved_model/confusion_matrix_cnn_bilstm.png)
+![CNN-BiLSTM Confusion Matrix](images/confusion_matrix_cnn_bilstm.png)
 
 </details>
 
 <details>
 <summary>BiLSTM + Risk</summary>
 
-![BiLSTM + Risk Confusion Matrix](saved_model/confusion_matrix_bilstm_risk.png)
+![BiLSTM + Risk Confusion Matrix](images/confusion_matrix_bilstm_risk.png)
 
 </details>
+
 
 
