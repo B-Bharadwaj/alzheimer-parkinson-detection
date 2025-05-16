@@ -27,17 +27,41 @@ This project detects Alzheimer's, Parkinson's, and normal protein sequences base
 
 ## 📂 Project Structure
 
+```
 A&P_Detection/
-├── data/ # CSV and embedded .pkl files
-│ ├── train.csv, val.csv, test.csv
-│ └── embedded/
-├── models/ # Model definitions
-│ └── cnn_bilstm_with_risk.py, transformer_with_risk.py, etc.
-├── saved_model/ # Trained .pt weights
-├── scripts/ # Utility scripts (risk assign, window augmentation)
-├── src/ # Training/evaluation/visualization
+├── data/                     # CSV and embedded .pkl files
+│   ├── train.csv
+│   ├── val.csv
+│   ├── test.csv
+│   └── embedded/
+│       ├── train.pkl
+│       ├── val.pkl
+│       └── test.pkl
+│
+├── models/                  # Model architecture definitions
+│   ├── cnn_bilstm_with_risk.py
+│   ├── transformer_with_risk.py
+│   └── bilstm_with_attention.py
+│
+├── saved_model/             # Trained model weights
+│   ├── cnn_bilstm_with_risk.pt
+│   ├── transformer_with_risk.pt
+│   └── bilstm_with_risk.pt
+│
+├── scripts/                 # Preprocessing utilities
+│   ├── add_risk_to_pkl.py
+│   └── augment_with_windows.py
+│
+├── src/                     # Main training, evaluation, visualization
+│   ├── train_bilstm_with_risk.py
+│   ├── train_transformer_with_risk.py
+│   ├── evaluate_bilstm_with_risk.py
+│   ├── evaluate_transformer_with_risk.py
+│   └── visualize_misclassified.py
+│
 ├── requirements.txt
 └── README.md
+```
 
 
 ---
