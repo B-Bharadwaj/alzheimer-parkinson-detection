@@ -66,10 +66,9 @@ A&P_Detection/
 
 ---
 
-## 🧠 How to Use
-
-### 1. Extract Sequences from `.pdb` files
+## 🧠 How to Use 
 ```bash
+1.Extract Sequences from `.pdb` files
 python src/extract_sequences.py
 
 2. Generate TAPE Embeddings
