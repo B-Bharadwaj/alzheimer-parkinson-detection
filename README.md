@@ -84,10 +84,10 @@ python src/evaluate_bilstm_with_risk.py
 python src/evaluate_transformer_with_risk.py
 
 ---
-
+```
 
 ## 📊 Results Summary
-```
+
 This section showcases evaluation metrics for different models used to classify protein sequences into **Alzheimer**, **Parkinson**, and **Normal** classes. Additionally, each model predicts a **misfolding risk score** (regression).
 
 ---
