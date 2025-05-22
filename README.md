@@ -94,11 +94,11 @@ This section showcases evaluation metrics for different models used to classify 
 
 ### ✅ Model Comparison Table
 
-| Model            | Accuracy | Alzheimer F1 | Parkinson F1 | Normal F1 | Risk MSE |
-|------------------|----------|---------------|--------------|-----------|----------|
-| Transformer      | 65%      | 0.75          | 0.50         | 0.67      | 0.1099   |
-| CNN-BiLSTM       | 63%      | 0.67          | 0.53         | 0.60      | 0.118x   |
-| BiLSTM + Risk    | 60%      | 0.65          | 0.47         | 0.60      | 0.131x   |
-| CNN-BiLSTM + Aug | 65%      | 0.71          | 0.50         | 0.63      | 0.1099   |
+| Model            | Alzheimer F1 | Parkinson F1 | Normal F1 | Risk MSE |
+|------------------|---------------|--------------|-----------|----------|
+| Transformer      | 0.75          | 0.50         | 0.67      | 0.1099   |
+| CNN-BiLSTM       | 0.67          | 0.53         | 0.60      | 0.118x   |
+| BiLSTM + Risk    | 0.65          | 0.47         | 0.60      | 0.131x   |
+| CNN-BiLSTM + Aug | 0.71          | 0.50         | 0.63      | 0.1099   |
 
 
