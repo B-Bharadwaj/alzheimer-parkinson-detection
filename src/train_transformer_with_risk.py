@@ -86,13 +86,18 @@ if __name__ == "__main__":
     clf_loss_fn  = FocalLoss(alpha=class_w)
     risk_loss_fn = nn.MSELoss()
 
+
+    train_losses, val_losses = [], []
+    train_accuracies, val_accuracies = [], []
+
+
     # --- Training loop with early stopping ---
     train_losses, val_losses = [], []
     best_val, patience, counter = float('inf'), 5, 0
 
     for epoch in range(1, 51):
         model.train()
-        t_clf, t_risk, correct, total = 0, 0, 0, 0
+        total_loss, correct, total = 0, 0, 0
         loop = tqdm(train_loader, desc=f"Epoch {epoch:02d}/50")
 
         for xb, yb, rb, lengths in loop:
@@ -103,34 +108,37 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
 
+            total_loss += loss.item()
             preds = logits.argmax(dim=1)
             correct += (preds == yb).sum().item()
             total += yb.size(0)
-            t_clf  += clf_loss_fn(logits, yb).item()
-            t_risk += risk_loss_fn(risk, rb).item()
-
-            loop.set_postfix(acc=f"{correct/total:.2%}",
-                             clf=f"{t_clf:.4f}",
-                             risk=f"{t_risk:.4f}")
+            loop.set_postfix(acc=f"{correct/total:.2%}", loss=loss.item())
 
         scheduler.step()
 
-        # --- Validation ---
+        train_acc = correct / total
+        train_losses.append(total_loss)
+        train_accuracies.append(train_acc)
+
+    # === Validation ===
         model.eval()
-        v_clf, v_risk = 0, 0
+        val_loss, val_correct, val_total = 0, 0, 0
         with torch.no_grad():
             for xb, yb, rb, lengths in val_loader:
                 xb, yb, rb, lengths = xb.to(device), yb.to(device), rb.to(device), lengths.to(device)
                 logits, risk = model(xb, lengths)
-                v_clf  += clf_loss_fn(logits, yb).item()
-                v_risk += risk_loss_fn(risk, rb).item()
+                loss = clf_loss_fn(logits, yb) + risk_loss_fn(risk, rb)
 
-        val_loss = v_clf + v_risk
-        train_losses.append(t_clf + t_risk)
+                val_loss += loss.item()
+                preds = logits.argmax(dim=1)
+                val_correct += (preds == yb).sum().item()
+                val_total += yb.size(0)
+
         val_losses.append(val_loss)
+        val_acc = val_correct / val_total
+        val_accuracies.append(val_acc)
 
-        train_acc = correct / total
-        print(f"Epoch {epoch:02d} | TrainLoss: {t_clf+t_risk:.4f} | ValLoss: {val_loss:.4f} | Acc: {train_acc:.2%}")
+        print(f"Epoch {epoch:02d} | TrainLoss: {total_loss:.4f} | ValLoss: {val_loss:.4f} | TrainAcc: {train_acc:.2%} | ValAcc: {val_acc:.2%}")
 
         # early stopping & save
         if val_loss < best_val:
@@ -155,3 +163,34 @@ if __name__ == "__main__":
     plt.tight_layout()
     plt.savefig("transformer_training_loss.png")
     print("📉 Saved loss plot")
+    import matplotlib.pyplot as plt
+
+    os.makedirs("images", exist_ok=True)
+
+    # Plot: Loss Curve
+    plt.figure(figsize=(8, 5))
+    plt.plot(train_losses, label="Train Loss")
+    plt.plot(val_losses, label="Val Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title("Transformer with Risk - Loss Curve")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("images/transformer_loss_curve.png")
+    plt.close()
+
+    # Plot: Accuracy Curve
+    plt.figure(figsize=(8, 5))
+    plt.plot(train_accuracies, label="Train Accuracy")
+    plt.plot(val_accuracies, label="Val Accuracy")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.title("Transformer with Risk - Accuracy Curve")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("images/transformer_accuracy_curve.png")
+    plt.close()
+
+    print("✅ Plots saved to images/transformer_loss_curve.png and transformer_accuracy_curve.png")
