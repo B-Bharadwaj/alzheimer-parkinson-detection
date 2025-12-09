@@ -1,6 +1,44 @@
-# 🧬 Alzheimer's & Parkinson's Protein Misfolding Detection
+# 🧬 Alzheimer & Parkinson’s Detection Using Protein Sequences  
+A deep learning project for classifying **Alzheimer’s**, **Parkinson’s**, and **Normal** protein sequences using **TAPE embeddings** and modern neural architectures.
 
-This project detects Alzheimer's, Parkinson's, and normal protein sequences based on misfolding risk using deep learning. It uses TAPE embeddings, BiLSTM + attention, and Transformer architectures, trained on `.pdb` sequences derived from Homo sapiens proteins.
+---
+
+## 🌟 Overview  
+This project focuses on detecting neurodegenerative diseases from **protein primary sequences**.  
+Instead of using clinical or imaging data, the model learns **sequence-level patterns** associated with disease-linked misfolding or dysfunction.
+
+The system currently performs **3-class classification**:
+
+- **Alzheimer’s disease**  
+- **Parkinson’s disease**  
+- **Normal proteins**
+
+---
+
+## 🧠 Key Features
+
+### **✔ TAPE Protein Embeddings**  
+- Pretrained transformer-based protein embeddings  
+- Captures biochemical, structural, and evolutionary features of sequences  
+- Provides contextual representation for each amino acid token  
+
+### **✔ Multiple Deep Learning Architectures**  
+Implemented architectures include:
+
+- **BiLSTM Model**  
+- **BiLSTM + Attention** (Luong-style attention for interpretability)  
+- **Transformer-based Classifier** (custom encoder with positional encoding)
+
+### **✔ Misfolding Risk Regression (Auxiliary Head)**  
+- Optional regression output predicting **misfolding risk score**  
+- Helps interpret protein stability and folding behavior  
+- Provides richer biological insights alongside classification
+
+### **✔ Visualization & Evaluation Tools**  
+- **Attention heatmaps** for misclassified sequences  
+- **Embedding projections** (t-SNE, PCA)  
+- **Training curves** (loss & accuracy)  
+- Detailed evaluation metrics (Accuracy, Precision, Recall, F1)
 
 ---
 
@@ -15,7 +53,7 @@ This project detects Alzheimer's, Parkinson's, and normal protein sequences base
 | CNN-BiLSTM + Risk    | ~0.65       | ~0.11                | Feature extraction + memory   |
 
 
-
+---
 
 ## 📂 Project Structure
 
